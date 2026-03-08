@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Binaural Elite Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amoled: #000000;
+            --purple: #c299ff;
+            --pink: #ffdae9;
+            --gold: #f3cf7a;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--amoled);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .aura {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(194, 153, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(255, 218, 233, 0.08) 0%, transparent 40%);
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: auto;
+            padding: 60px 20px 120px 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn.active {
+            border-color: var(--purple);
+            background: rgba(194, 153, 255, 0.15);
+            transform: scale(0.97);
+        }
+
+        .btn-yonathan {
+            border: 2px solid var(--gold) !important;
+            background: linear-gradient(135deg, rgba(243,207,122,0.1), transparent);
+            box-shadow: 0 0 20px rgba(243, 207, 122, 0.1);
+        }
+        
+        .btn-yonathan h3 { color: var(--gold); text-shadow: 0 0 10px rgba(243, 207, 122, 0.3); }
+
+        .btn-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .btn-info p { font-size: 0.75rem; opacity: 0.5; font-weight: 300; }
+        
+        .tag {
+            font-size: 0.6rem;
+            color: var(--purple);
+            border: 1px solid rgba(194, 153, 255, 0.4);
+            padding: 5px 12px;
+            border-radius: 14px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .back-btn {
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #splash {
+            position: fixed;
+            inset: 0;
+            background: black;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="splash" onclick="startExperience()">
+        <p style="letter-spacing: 8px; font-size: 0.7rem; color: var(--purple); margin-bottom: 15px;">USA AUDIFONOS MI AMOR</p>
+        <p style="font-size: 0.6rem; opacity: 0.5;">TOCA PARA ENTRAR :></p>
+    </div>
+
+    <div class="aura"></div>
+
+    <div class="scroll-container">
+        <header>
+            <p style="letter-spacing: 5px; font-size: 0.6rem; opacity: 0.6; text-transform: uppercase;">:D</p>
+            <h1>Frecuencias BINAURALES</h1>
+        </header>
+
+        <div class="grid">
+            <div class="btn btn-yonathan" onclick="action(this, 'file', 'SonidoYNTHN.mp3')">
+                <div class="btn-info">
+                    <h3>Sonido YONATHAN</h3>
+                    <p>Frecuencia YNTHN</p>
+                </div>
+                <div class="tag" style="color:var(--gold); border-color:var(--gold)">RECOMENDADO</div>
+            </div>
+
+            <div class="btn" onclick="action(this, 'binaural', 333, 10)">
+                <div class="btn-info">
+                    <h3>Frecuencia 333</h3>
+                    <p>Balance y claridad mental</p>
+                </div>
+                <div class="tag">:D</div>
+            </div>
+
+            <div class="btn" onclick="action(this, 'binaural', 444, 7)">
+                <div class="btn-info">
+                    <h3>Frecuencia 444</h3>
+                    <p>Paz y Meditación</p>
+                </div>
+                <div class="tag">:D</div>
+            </div>
+
+            <div class="btn" onclick="action(this, 'binaural', 528, 10)">
+                <div class="btn-info">
+                    <h3>Frecuencia 528</h3>
+                    <p>Reparación y calmar</p>
+                </div>
+                <div class="tag">:></div>
+            </div>
+
+            <div class="btn" onclick="action(this, 'binaural', 963, 10)">
+                <div class="btn-info">
+                    <h3>Frecuencia 963</h3>
+                    <p>Despejar Mente</p>
+                </div>
+                <div class="tag">:></div>
+            </div>
+
+            <div class="btn" onclick="action(this, 'binaural', 174, 5)">
+                <div class="btn-info">
+                    <h3>Frecuencia 174</h3>
+                    <p>Calmar estrés</p>
+                </div>
+                <div class="tag">c:</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="home.html" class="back-btn">REGRESAR</a>
+        </div>
+    </div>
+
+    <script>
+        let menuMusic = new Audio('BinauralesMenuMusica.mp3');
+        menuMusic.loop = true;
+        
+        let customFile = new Audio();
+        let audioCtx = null;
+        let oscL = null, oscR = null, masterGain = null;
+
+        function startExperience() {
+            document.getElementById('splash').style.opacity = '0';
+            setTimeout(() => document.getElementById('splash').style.display = 'none', 500);
+            menuMusic.play().catch(e => console.log("Esperando interacción"));
+        }
+
+        // FUNCIÓN DE LIMPIEZA ABSOLUTA
+        function clearAllSound() {
+            // 1. Detener osciladores binaurales
+            if (oscL) { oscL.stop(); oscL = null; }
+            if (oscR) { oscR.stop(); oscR = null; }
+            if (masterGain) { masterGain.disconnect(); masterGain = null; }
+
+            // 2. Pausar archivos
+            menuMusic.pause();
+            customFile.pause();
+            customFile.currentTime = 0;
+
+            // 3. Reset UI
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+        }
+
+        function action(el, type, val, beat = 10) {
+            // Si ya está activo, apagamos y volvemos al menú
+            if (el.classList.contains('active')) {
+                clearAllSound();
+                menuMusic.play();
+                return;
+            }
+
+            // Limpiamos todo antes de iniciar lo nuevo
+            clearAllSound();
+            el.classList.add('active');
+
+            if (type === 'file') {
+                customFile.src = val;
+                customFile.play();
+            } else if (type === 'binaural') {
+                initBinaural(val, beat);
+            }
+        }
+
+        function initBinaural(base, beat) {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            oscL = audioCtx.createOscillator();
+            oscR = audioCtx.createOscillator();
+            masterGain = audioCtx.createGain();
+            let panL = audioCtx.createStereoPanner();
+            let panR = audioCtx.createStereoPanner();
+
+            oscL.frequency.value = base;
+            panL.pan.value = -1; // Oído izquierdo
+
+            oscR.frequency.value = base + beat;
+            panR.pan.value = 1; // Oído derecho
+
+            oscL.connect(panL).connect(masterGain);
+            oscR.connect(panR).connect(masterGain);
+            masterGain.connect(audioCtx.destination);
+
+            masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+            masterGain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 1);
+
+            oscL.start();
+            oscR.start();
+        }
+    </script>
+</body>
+</html>
